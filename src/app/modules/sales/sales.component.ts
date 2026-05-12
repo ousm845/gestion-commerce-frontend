@@ -153,11 +153,11 @@ import { DataTableComponent, TableColumn } from '../../shared/components/data-ta
                       <option *ngFor="let p of produitsFiltres" [value]="p.id">{{ p.nom }}</option>
                     </select>
                     <!-- Stock Info Display -->
-                    <div *ngIf="ligne.get('produit')?.value" class="stock-info" [ngClass]="getStockInfo(ligne.get('produit')?.value)?.statut">
-                      <span *ngIf="getStockInfo(ligne.get('produit')?.value)?.statut === 'rupture'" class="stock-badge rupture">❌ Rupture</span>
-                      <span *ngIf="getStockInfo(ligne.get('produit')?.value)?.statut === 'alerte'" class="stock-badge alerte">⚠️ Stock: {{ getStockInfo(ligne.get('produit')?.value)?.quantite }} {{ getStockInfo(ligne.get('produit')?.value)?.unite }}</span>
-                      <span *ngIf="getStockInfo(ligne.get('produit')?.value)?.statut === 'ok'" class="stock-badge ok">✅ Stock: {{ getStockInfo(ligne.get('produit')?.value)?.quantite }} {{ getStockInfo(ligne.get('produit')?.value)?.unite }}</span>
-                      <span *ngIf="getStockInfo(ligne.get('produit')?.value)?.statut === 'unknown'" class="stock-badge unknown">✅ Stock: {{ getStockInfo(ligne.get('produit')?.value)?.quantite }} {{ getStockInfo(ligne.get('produit')?.value)?.unite }}</span>
+                    <div *ngIf="ligne.get('produit')?.value" class="stock-info" [ngClass]="getStockInfo(ligne.get('produit')?.value).statut">
+                      <span *ngIf="getStockInfo(ligne.get('produit')?.value).statut === 'rupture'" class="stock-badge rupture">❌ Rupture</span>
+                      <span *ngIf="getStockInfo(ligne.get('produit')?.value).statut === 'alerte'" class="stock-badge alerte">⚠️ Stock: {{ getStockInfo(ligne.get('produit')?.value).quantite }} {{ getStockInfo(ligne.get('produit')?.value).unite }}</span>
+                      <span *ngIf="getStockInfo(ligne.get('produit')?.value).statut === 'ok'" class="stock-badge ok">✅ Stock: {{ getStockInfo(ligne.get('produit')?.value).quantite }} {{ getStockInfo(ligne.get('produit')?.value).unite }}</span>
+                      <span *ngIf="getStockInfo(ligne.get('produit')?.value).statut === 'unknown'" class="stock-badge unknown">✅ Stock: {{ getStockInfo(ligne.get('produit')?.value).quantite }} {{ getStockInfo(ligne.get('produit')?.value).unite }}</span>
                     </div>
                   </div>
                   <div class="form-group">

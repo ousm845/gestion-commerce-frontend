@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: false,\n  apiUrl: 'http://localhost:8000/api',\n  appName: 'SyliDigit - Gestion Intégrée',\n  version: '1.0.0'\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
