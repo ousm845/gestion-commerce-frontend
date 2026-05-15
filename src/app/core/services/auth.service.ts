@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, tap, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { User, LoginRequest, AuthResponse } from '../../shared/models/models';
 
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly TOKEN_KEY = 'sylidigit_access';
@@ -17,6 +18,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(credentials: LoginRequest): Observable<AuthResponse> {
+
     console.log('AuthService - Login attempt for:', credentials.username);
     return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/auth/login/`, credentials).pipe(
       tap(response => {
@@ -42,7 +44,19 @@ export class AuthService {
     this.router.navigate(['/auth/login']);
   }
 
+  register(credentials: any): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/auth/register/`, credentials).pipe(
+      tap((response) => {
+        localStorage.setItem(this.TOKEN_KEY, response.access);
+        localStorage.setItem(this.REFRESH_KEY, response.refresh);
+        localStorage.setItem(this.USER_KEY, JSON.stringify(response.user));
+        this.currentUserSubject.next(response.user);
+      })
+    );
+  }
+
   refreshToken(): Observable<any> {
+
     const refresh = localStorage.getItem(this.REFRESH_KEY);
     return this.http.post<any>(`${environment.apiUrl}/token/refresh/`, { refresh }).pipe(
       tap(response => localStorage.setItem(this.TOKEN_KEY, response.access))

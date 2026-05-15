@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksylidigit=self.webpackChunksylidigit||[]).push([[811],{8811:(i,n,s)=>{s.r(n),s.d(n,{DepensesComponent:()=>e.DepensesComponent});var e=s(129)}}]);

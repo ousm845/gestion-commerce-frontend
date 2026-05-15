@@ -53,7 +53,10 @@ import { AuthService } from '../../core/services/auth.service';
         </form>
 
         <div class="login-footer">
-          <small>SyliDigit v1.0 — Proposé par SyliDigit</small>
+          <small>
+            SyliDigit v1.0 — Proposé par SyliDigit
+            • <a routerLink="/auth/register" style="color:#ff9500; text-decoration:none;">S'inscrire</a>
+          </small>
         </div>
       </div>
     </div>
