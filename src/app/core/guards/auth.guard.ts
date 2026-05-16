@@ -4,33 +4,18 @@ import { AuthService } from '../services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (!this.authService.isLoggedIn()) {
-      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
-      return false;
-    }
-
-    const requiredRoles = route.data?.['roles'] as string[];
-    if (requiredRoles && !this.authService.hasRole(...requiredRoles)) {
-      this.router.navigate(['/dashboard']);
-      return false;
-    }
-
+  // Auth désactivée : on autorise tout.
+  canActivate(): boolean {
     return true;
   }
 }
+
 
 @Injectable({ providedIn: 'root' })
 export class NoAuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
-
+  // Auth désactivée : on autorise tout.
   canActivate(): boolean {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/dashboard']);
-      return false;
-    }
     return true;
   }
 }
+

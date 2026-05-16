@@ -37,8 +37,9 @@ interface ProduitVendu {
       <!-- Welcome Banner -->
       <div class="welcome-banner">
         <div class="welcome-text">
-          <h3>Bienvenue sur SyliDigit 👋</h3>
-          <p>Voici un aperçu de votre activité en temps réel.</p>
+          <h3>Bienvenue dans sylidigit-group</h3>
+          <p>Suivant → pour entrer dans l’application.</p>
+
         </div>
         <div class="welcome-date">{{ today | date:'EEEE dd MMMM yyyy':'':'fr' }}</div>
       </div>

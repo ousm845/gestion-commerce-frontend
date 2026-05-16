@@ -159,30 +159,8 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit(): void {
-    if (this.loginForm.invalid) return;
-    this.loading = true;
-    this.errorMessage = '';
-
-    this.authService.login(this.loginForm.value).subscribe({
-      next: () => this.router.navigateByUrl(this.returnUrl),
-      error: err => {
-        console.error('Login error:', err);
-        // Handle different error formats
-        if (err.error?.non_field_errors) {
-          this.errorMessage = err.error.non_field_errors[0];
-        } else if (err.error?.username) {
-          this.errorMessage = err.error.username[0];
-        } else if (err.error?.password) {
-          this.errorMessage = err.error.password[0];
-        } else if (err.error?.detail) {
-          this.errorMessage = err.error.detail;
-        } else if (err.status === 0) {
-          this.errorMessage = 'Impossible de se connecter au serveur. Vérifiez que le backend est en cours d\'exécution.';
-        } else {
-          this.errorMessage = 'Identifiants invalides.';
-        }
-        this.loading = false;
-      }
-    });
+    // Login désactivé : accès direct à l'application.
+    this.router.navigateByUrl(this.returnUrl);
   }
 }
+

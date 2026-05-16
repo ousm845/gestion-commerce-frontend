@@ -212,33 +212,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.form.invalid) return;
-
-    this.loading = true;
-    this.errorMessage = '';
-
-    const payload = {
-      username: this.form.value.username,
-      email: this.form.value.email,
-      first_name: this.form.value.first_name,
-      last_name: this.form.value.last_name,
-      telephone: this.form.value.telephone,
-      role: 'superviseur',
-      password: this.form.value.password,
-      password_confirm: this.form.value.password_confirm,
-    };
-
-    this.authService.register(payload).subscribe({
-      next: () => this.router.navigateByUrl('/dashboard'),
-      error: (err) => {
-        console.error('Register error:', err);
-        this.errorMessage = err?.error?.detail || err?.error?.non_field_errors?.[0] || 'Impossible de s\'inscrire.';
-        this.loading = false;
-      },
-      complete: () => {
-        this.loading = false;
-      }
-    });
+    // Register désactivé : accès direct à l'application.
+    this.router.navigateByUrl('/dashboard');
   }
 }
+
 
